@@ -12,20 +12,20 @@
       <div class="mb-3 col-md-6">
         <label for="name" class="form-label">Ad</label>
         <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Adinizi daxil edin</div>
+        <div id="emailHelp" class="form-text">Adınızı daxil edin</div>
       </div>
       <div class="mb-3 col-md-6">
         <label for="surname" class="form-label">Soyad</label>
         <input type="text" class="form-control" id="surname" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Soyadinizi daxil edin</div>
+        <div id="emailHelp" class="form-text">Soyadınızı daxil edin</div>
       </div>
       <div class="mb-3 col-md-6">
-        <label for="date" class="form-label">Ishe baslama tarix</label>
+        <label for="date" class="form-label">İşə başlama vaxtı</label>
         <input type="date" class="form-control" name='date' id="date" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Ise baslama vaxtinizi qeyd edin.</div>
+        <div id="emailHelp" class="form-text">İşə başlama vaxtınızı qeyd edin</div>
       </div>
       <div class="mb-3 col-md-6">
-        <label for="role" class="form-label">Vezife</label>
+        <label for="role" class="form-label">Vəzifə</label>
         <select class="form-select form-select-lg mb-3" id="role_id" aria-label=".form-select-lg example">
           <option selected>Rolunuz Daxil Edin</option>
           <?php
@@ -36,9 +36,8 @@
           }
           ?>
         </select
-        <div id="emailHelp" class="form-text">Vezifenizi secin</div>
       </div>
-      <div class="mb-3 col-md-6">
+      <div class="mb-3 col-md-12">
         <label for="salary" class="form-label">Emek Haqqi</label>
         <input type="text" class="form-control" id="salary" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">Emek haqqinizi daxil edin</div>
@@ -79,7 +78,13 @@
 
         },
         error: function(){
-          alert('error');
+          alert('Form tam doldurulmalıdır!');
+          if ($('#name').val() == '') {
+            $('#name').addClass('is-invalid');
+          }
+          if ($('#surname').val() == '') {
+            $('#surname').addClass('is-invalid');
+          }
         },
         complete: function(d){
           console.log("data sended");
