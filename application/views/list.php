@@ -131,7 +131,8 @@ if (isset($filter) && count($filter) == 0) { ?>
         $('#search_text').val('');
         $('#role')[0].selectedIndex = 0;
     });
-    });
+
+    
 </script>
 
 <?php require_once APPPATH . 'views/layouts/footer.php'; ?>
