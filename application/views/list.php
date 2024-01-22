@@ -130,9 +130,21 @@ if (isset($filter) && count($filter) == 0) { ?>
         $('#min_salary').val('');
         $('#search_text').val('');
         $('#role')[0].selectedIndex = 0;
+
+        let currentUrl = window.location.href;
+
+        // Parametreleri temizle
+        let newUrl = removeURLParameters(currentUrl);
+
+        // Yeni URL'ye yönlendir
+        window.location.href = newUrl;
     });
 
-    
+    function removeURLParameters(url) {
+        var urlParts = url.split('?');
+        return urlParts[0]; // Parametreler olmadan URL'yi geri döndür
+    }
+    });
 </script>
 
 <?php require_once APPPATH . 'views/layouts/footer.php'; ?>
