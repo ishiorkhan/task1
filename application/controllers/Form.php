@@ -55,7 +55,6 @@ $result = $this->FormSubmit->insert_data($data);
 
         $data['employees'] = $this->FormSubmit->getEmp();
         $data['roles'] = $this->Roles->getRoles();
-
         $this->load->view('list', $data);
     }
 
@@ -96,9 +95,17 @@ $result = $this->FormSubmit->insert_data($data);
         $min_salary = $this->input->get('min_salary') == '' ? min(array_values($salary)) : $this->input->get('min_salary');
         $max_salary = $this->input->get('max_salary') == '' ? max(array_values($salary)) : $this->input->get('max_salary');
 
-        $this->load->model(['Filter', 'Roles']);
+        $this->load->model(['Filter', 'Roles', 'Logs']);
         $data['filter'] = $this->Filter->getFilter($role, $min_salary, $max_salary, $search_text);
         $data['roles'] = $this->Roles->getRoles();
+
+				if ($search_text != ''){
+            $logs = array(
+                'search_text' => $search_text,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+            $this->Logs->insertLog($logs);
+        }
 
         $this->load->view('list', $data);
     }

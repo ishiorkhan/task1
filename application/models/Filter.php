@@ -40,7 +40,7 @@ class Filter extends CI_Model
                   on employees.role_id=roles.id
                   WHERE 1=1
                   AND (employees.salary >= $min_salary AND employees.salary <= $max_salary) ";
-        if ($role != '')
+        if ($role)
         {
             $query .= " AND employees.role_id=$role";
         }

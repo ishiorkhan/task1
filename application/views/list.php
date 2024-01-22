@@ -15,10 +15,14 @@
         <select class="form-select" name="role" id="role" aria-label="Default select example">
             <option value="">Vəzifəniz</option>
             <?php
-            foreach ($roles as  $role ){
-                ?>
-                <option <?php $role->id == $_GET['role'] ? 'selected' : '' ?> value="<?= $role->id ?>"><?= $role->name ?></option>
-            <?php
+            if (isset($roles) && count($roles)>0) {
+              foreach ($roles as  $role ){
+                  ?>
+                  <option <?php echo $role->id == $this->input->get("role") ?
+                  'selected' : '' ?> value="<?= $role->id ?>">
+                  <?= $role->name ?></option>
+              <?php
+            }
             }
             ?>
         </select>
