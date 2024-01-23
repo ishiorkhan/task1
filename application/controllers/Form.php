@@ -58,6 +58,15 @@ $result = $this->FormSubmit->insert_data($data);
         $this->load->view('list', $data);
     }
 
+		public function logs()
+    {
+        $this->load->model(['LogsModel']);
+
+        $data['logs'] = $this->LogsModel->getLogs();
+        $this->load->view('logs', $data);
+    }
+
+
     public function search()
     {
         $search_text = $this->input->get('search_text');
@@ -67,7 +76,7 @@ $result = $this->FormSubmit->insert_data($data);
 
         if ($search_text != ''){
             $logs = array(
-                'search_text' => $search_text,
+                'keywords' => $search_text,
                 'created_at' => date('Y-m-d H:i:s')
             );
             $this->Logs->insertLog($logs);
@@ -88,7 +97,7 @@ $result = $this->FormSubmit->insert_data($data);
     public function filter()
     {
         $this->load->model('FormSubmit');
-				$search_text = $this->input->get('search_text');
+				$keywords = $this->input->get('search_text');
         $salary = $this->FormSubmit->getEmp();
         $salary = array_column($salary, 'salary');
         $role = $this->input->get('role');
@@ -96,12 +105,12 @@ $result = $this->FormSubmit->insert_data($data);
         $max_salary = $this->input->get('max_salary') == '' ? max(array_values($salary)) : $this->input->get('max_salary');
 
         $this->load->model(['Filter', 'Roles', 'Logs']);
-        $data['filter'] = $this->Filter->getFilter($role, $min_salary, $max_salary, $search_text);
+        $data['filter'] = $this->Filter->getFilter($role, $min_salary, $max_salary, $keywords);
         $data['roles'] = $this->Roles->getRoles();
 
-				if ($search_text != ''){
+				if ($keywords != ''){
             $logs = array(
-                'search_text' => $search_text,
+                'keywords' => $keywords,
                 'created_at' => date('Y-m-d H:i:s')
             );
             $this->Logs->insertLog($logs);

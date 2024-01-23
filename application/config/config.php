@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-//$config['base_url'] = 'http://employee.loc/task1/';
+$config['base_url'] = 'http://employee.loc/task1/';
 
-$config['base_url'] = 'http://task.az/';
+// $config['base_url'] = 'http://task.az/';
 
 /*
 |--------------------------------------------------------------------------

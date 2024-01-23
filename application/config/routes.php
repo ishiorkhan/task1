@@ -55,5 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['/'] = 'Form/index';
 $route['list'] = 'Form/list';
+$route['logs'] = 'Form/logs';
+
 $route['axtaris'] = 'Form/search';
 $route['filter'] = 'Form/filter';

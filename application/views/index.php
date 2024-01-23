@@ -4,25 +4,27 @@
     <div class="d-flex justify-content-between">
       <h1>Form</h1>
       <div class="">
-        <a href="<?php echo base_url('form/list') ?>" class="btn btn-warning">List</a>
+        <a href="<?= base_url('form/list') ?>" class="btn btn-success">List</a>
+        <a href="<?= base_url('form/logs') ?>" class="btn btn-danger">Logs</a>
       </div>
+
     </div>
 <hr>
     <form method="post">
       <div class="mb-3 col-md-6">
         <label for="name" class="form-label">Ad</label>
         <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Adınızı daxil edin</div>
+        <div id="emailHelp" class="form-text d-none" id="name_text">Adınızı daxil edin</div>
       </div>
       <div class="mb-3 col-md-6">
         <label for="surname" class="form-label">Soyad</label>
         <input type="text" class="form-control" id="surname" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Soyadınızı daxil edin</div>
+        <div id="emailHelp" class="form-text d-none" id="surname_text">Soyadınızı daxil edin</div>
       </div>
       <div class="mb-3 col-md-6">
         <label for="date" class="form-label">İşə başlama vaxtı</label>
         <input type="date" class="form-control" name='date' id="date" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">İşə başlama vaxtınızı qeyd edin</div>
+        <div id="emailHelp" class="form-text d-none">İşə başlama vaxtınızı qeyd edin</div>
       </div>
       <div class="mb-3 col-md-6">
         <label for="role" class="form-label">Vəzifə</label>
@@ -40,7 +42,7 @@
       <div class="mb-3 col-md-12">
         <label for="salary" class="form-label">Emek Haqqi</label>
         <input type="text" class="form-control" id="salary" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">Emek haqqinizi daxil edin</div>
+        <div id="emailHelp" class="form-text d-none">Emek haqqinizi daxil edin</div>
       </div>
       <div class="mb-3 col-md-6">
         <input class="btn btn-success" id="submitData" value="Gonder">

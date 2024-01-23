@@ -4,7 +4,8 @@
     <h1>List</h1>
     <div class="d-flex justify-content-between">
       <div>
-        <a href="<?= base_url('/') ?>" class="btn btn-warning" name="">Form</a>
+        <a href="<?= base_url('/') ?>" class="btn btn-success" name="">Form</a>
+        <a href="<?= base_url('/logs') ?>" class="btn btn-danger" name="">Logs</a>
       </div>
     </div>
 </div>
