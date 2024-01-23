@@ -49,55 +49,5 @@ if (isset($logs) && count($logs) == 0) { ?>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $("#search_text").keyup(function() {
-            var search_text = $(this).val();
-
-            $.ajax({
-                url: "<?= base_url('form/search_keyup') ?>",
-                type: 'GET',
-                data: {search_text: search_text},
-                dataType: 'json',
-                success: function(response) {
-                    displayResults(response);
-                }
-            });
-        });
-
-        function displayResults(data) {
-            var resultsContainer = $("#autocomplete-results");
-            resultsContainer.empty();
-
-            if (data.length > 0) {
-                $.each(data, function(index, value) {
-                    resultsContainer.append('<div>' + value.name + ' ' +value.surname + '</div>');
-                });
-            } else {
-                resultsContainer.append('<div>Məlumat tapılmadı!</div>');
-            }
-        }
-
-        $('#resetFilter').click(function () {
-        $('#max_salary').val('');
-        $('#min_salary').val('');
-        $('#search_text').val('');
-        $('#role')[0].selectedIndex = 0;
-
-        let currentUrl = window.location.href;
-
-        // Parametreleri temizle
-        let newUrl = removeURLParameters(currentUrl);
-
-        // Yeni URL'ye yönlendir
-        window.location.href = newUrl;
-    });
-
-    function removeURLParameters(url) {
-        var urlParts = url.split('?');
-        return urlParts[0]; // Parametreler olmadan URL'yi geri döndür
-    }
-    });
-</script>
 
 <?php require_once APPPATH . 'views/layouts/footer.php'; ?>
