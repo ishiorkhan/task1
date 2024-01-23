@@ -19,9 +19,8 @@
 <table class="table">
     <thead>
     <tr>
-        <th style="width:500px" scope="col">ID</th>
-        <th style="width:600px" scope="col">Açar Söz</th>
-        <th style="width:200px" scope="col">Təkrar Sayı</th>
+        <th  style="width:1000px" scope="col">Açar Söz</th>
+        <th  scope="col">Təkrar Sayı</th>
     </tr>
     </thead>
     <tbody>
@@ -30,7 +29,6 @@
      foreach ($logs as $log) {
          ?>
          <tr>
-             <td>#<?= $log->id ?></td>
              <td><?= $log->keywords ?></td>
              <td><?= $log->keywords_count ?></td>
          </tr>

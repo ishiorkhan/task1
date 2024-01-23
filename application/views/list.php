@@ -35,10 +35,10 @@
         <input type="number" step="0.01" class="form-control" name="max_salary" value="<?= $_GET['max_salary'] ?? ''; ?>" id="max_salary" placeholder="Maksimum Maaş">
     </div>
     <div class="">
-      <input class="form-control me-2 autocomplete" type="search" value="<?= $_GET['search_text'] ?? ''; ?>" name="search_text" id="search_text" placeholder="Ad və Soyada görə axtarış" aria-label="Search">
+      <input class="form-control me-2" type="search" value="<?= $_GET['search_text'] ?? ''; ?>" name="search_text" id="search" placeholder="Ad və Soyada görə axtarış" aria-label="Search">
       <input class="btn btn-outline-success me-3 col-md-12" value="Axtar" type="submit" ></input>
       <input class="btn btn-outline-danger me-3 col-md-12" value="Reset" id="resetFilter" type="button" ></input>
-      <div id="autocomplete-results"></div>
+      <div id="suggestions-container"></div>
     </div>
 </form>
 
@@ -99,32 +99,6 @@ if (isset($filter) && count($filter) == 0) { ?>
 
 <script>
     $(document).ready(function() {
-        $("#search_text").keyup(function() {
-            var search_text = $(this).val();
-
-            $.ajax({
-                url: "<?= base_url('form/search_keyup') ?>",
-                type: 'GET',
-                data: {search_text: search_text},
-                dataType: 'json',
-                success: function(response) {
-                    displayResults(response);
-                }
-            });
-        });
-
-        function displayResults(data) {
-            var resultsContainer = $("#autocomplete-results");
-            resultsContainer.empty();
-
-            if (data.length > 0) {
-                $.each(data, function(index, value) {
-                    resultsContainer.append('<div>' + value.name + ' ' +value.surname + '</div>');
-                });
-            } else {
-                resultsContainer.append('<div>Məlumat tapılmadı!</div>');
-            }
-        }
 
         $('#resetFilter').click(function () {
         $('#max_salary').val('');
@@ -145,7 +119,7 @@ if (isset($filter) && count($filter) == 0) { ?>
         var urlParts = url.split('?');
         return urlParts[0]; // Parametreler olmadan URL'yi geri döndür
     }
-    });
+    
 </script>
 
 <?php require_once APPPATH . 'views/layouts/footer.php'; ?>

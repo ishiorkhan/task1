@@ -101,9 +101,8 @@ $result = $this->FormSubmit->insert_data($data);
         $salary = $this->FormSubmit->getEmp();
         $salary = array_column($salary, 'salary');
         $role = $this->input->get('role');
-        $min_salary = $this->input->get('min_salary') == '' ? min(array_values($salary)) : $this->input->get('min_salary');
-        $max_salary = $this->input->get('max_salary') == '' ? max(array_values($salary)) : $this->input->get('max_salary');
-
+        $min_salary = $this->input->get('min_salary');
+        $max_salary = $this->input->get('max_salary');
         $this->load->model(['Filter', 'Roles', 'Logs']);
         $data['filter'] = $this->Filter->getFilter($role, $min_salary, $max_salary, $keywords);
         $data['roles'] = $this->Roles->getRoles();

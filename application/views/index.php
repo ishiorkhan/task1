@@ -62,6 +62,21 @@
           date = $('[name="date"]').val(),
           role_id = $('#role_id').val(),
           salary = $('#salary').val();
+
+      if (!name) {
+        $('[name="name"]').addClass('is-invalid');
+      } else {
+        $('[name="name"]').removeClass('is-invalid');
+      }
+      if (!surname) {
+        $('[name="surname"]').addClass('is-invalid');
+      } else {
+        $('[name="surname"]').removeClass('is-invalid');
+      }
+
+      alert('Form tam doldurulmalıdır!');
+      if(!name || !surname) return;
+
       $.post({
         url: "<?= base_url('form/form_submit') ?>",
         dataType: 'json',
@@ -80,13 +95,7 @@
 
         },
         error: function(){
-          alert('Form tam doldurulmalıdır!');
-          if ($('#name').val() == '') {
-            $('#name').addClass('is-invalid');
-          }
-          if ($('#surname').val() == '') {
-            $('#surname').addClass('is-invalid');
-          }
+
         },
         complete: function(d){
           console.log("data sended");
