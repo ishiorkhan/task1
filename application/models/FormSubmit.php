@@ -9,7 +9,8 @@ class FormSubmit extends CI_Model
             Select employees.name,employees.surname,employees.date,employees.salary,roles.name as role_name
                 From employees
                 JOIN roles
-            on employees.role_id=roles.id');
+            on employees.role_id=roles.id
+            WHERE employees.deleted_at IS NULL');
         return $query->result();
     }
 
